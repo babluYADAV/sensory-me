@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensory Me — Autism & Sensory Rehabilitation Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBF8F2;
+    --sand:#EDE1CC;
+    --ink:#2C4A42;
+    --ink-soft:#4A655D;
+    --sage:#7E9C88;
+    --sage-dark:#5C7A68;
+    --honey:#D9A441;
+    --line:#DCD0B8;
+    --white:#FFFFFF;
+    --radius-organic: 62% 38% 55% 45% / 45% 55% 45% 55%;
+    --max: 1140px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Lora', serif;
+    color:var(--ink);
+    margin:0;
+    font-weight:500;
+    line-height:1.2;
+  }
+
+  p{ margin:0 0 1em 0; color:var(--ink-soft); }
+  a{ color:inherit; }
+
+  img, svg{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:3px solid var(--honey);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(251,248,242,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 32px;
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .logo-mark{
+    width:34px; height:34px; flex-shrink:0;
+  }
+  .logo-text{
+    font-family:'Lora', serif;
+    font-size:1.25rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  nav.primary-nav ul{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  nav.primary-nav a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-weight:600;
+    font-size:0.96rem;
+    position:relative;
+    padding:4px 0;
+  }
+  nav.primary-nav a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0; height:2px;
+    background:var(--sage);
+    transition:width .25s ease;
+  }
+  nav.primary-nav a:hover::after{ width:100%; }
+
+  .nav-right{ display:flex; align-items:center; gap:22px; }
+  .btn{
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    font-family:'Karla', sans-serif;
+  }
+  .btn-primary{
+    background:var(--sage);
+    color:var(--white);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{ background:var(--sage-dark); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{ background:var(--ink); color:var(--white); }
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .nav-toggle span{
+    display:block;
+    width:24px; height:2px;
+    background:var(--ink);
+    margin:5px 0;
+    border-radius:2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:88px 0 110px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    color:var(--sage-dark);
+    font-weight:700;
+    font-size:0.98rem;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.2vw, 3.6rem);
+    max-width:12ch;
+  }
+  .hero .lede{
+    font-size:1.15rem;
+    max-width:46ch;
+    margin-top:22px;
+    color:var(--ink-soft);
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    margin-top:34px;
+    flex-wrap:wrap;
+  }
+  .hero-note{
+    margin-top:28px;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hero-note .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--honey);
+    flex-shrink:0;
+  }
+
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .blob{
+    position:absolute;
+    inset:6%;
+    background:linear-gradient(155deg, var(--sand) 0%, #DCEAE0 100%);
+    border-radius:var(--radius-organic);
+  }
+  .hero-svg{
+    position:relative;
+    width:82%;
+  }
+
+  /* ---------- Section basics ---------- */
+  section{ padding:96px 0; }
+  .section-alt{ background:var(--sand); }
+  .kicker{
+    color:var(--sage-dark);
+    font-weight:700;
+    font-size:0.98rem;
+    margin-bottom:14px;
+  }
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 2.6vw, 2.4rem);
+  }
+  .section-head p{ margin-top:16px; font-size:1.08rem; }
+
+  /* ---------- Philosophy ---------- */
+  .philosophy-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .philosophy-figure{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:1.7rem;
+    line-height:1.45;
+    color:var(--ink);
+    border-left:3px solid var(--sage);
+    padding-left:28px;
+  }
+  .philosophy-body p{ font-size:1.05rem; }
+  .stat-row{
+    display:flex;
+    gap:40px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .stat-row div{ min-width:120px; }
+  .stat-num{
+    font-family:'Lora', serif;
+    font-size:2rem;
+    color:var(--sage-dark);
+    display:block;
+  }
+  .stat-label{ font-size:0.92rem; color:var(--ink-soft); }
+
+  /* ---------- Services (alternating, asymmetric) ---------- */
+  .service-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+    padding:52px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .service-row:first-of-type{ padding-top:0; }
+  .service-row:last-of-type{ border-bottom:none; padding-bottom:0; }
+  .service-row.reverse .service-icon{ order:2; }
+  .service-row.reverse .service-copy{ order:1; }
+
+  .service-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .service-icon svg{ width:120px; height:120px; }
+  .service-copy h3{ font-size:1.5rem; }
+  .service-copy p{ margin-top:14px; font-size:1.02rem; max-width:48ch; }
+  .service-copy a{
+    display:inline-block;
+    margin-top:14px;
+    font-weight:700;
+    color:var(--sage-dark);
+    text-decoration:none;
+    border-bottom:1.5px solid var(--sage);
+    padding-bottom:2px;
+  }
+
+  /* ---------- Approach (sequence — numbered) ---------- */
+  .approach-track{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+  .approach-track::before{
+    content:'';
+    position:absolute;
+    top:26px;
+    left:6%;
+    right:6%;
+    height:1px;
+    background:var(--line);
+  }
+  .approach-step{ position:relative; }
+  .approach-num{
+    width:52px; height:52px;
+    border-radius:50%;
+    background:var(--ivory);
+    border:1.5px solid var(--sage);
+    color:var(--sage-dark);
+    font-family:'Lora', serif;
+    font-size:1.15rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:2;
+    margin-bottom:20px;
+  }
+  .approach-step h3{ font-size:1.1rem; margin-bottom:10px; }
+  .approach-step p{ font-size:0.96rem; }
+
+  /* ---------- Testimonial ---------- */
+  .testimonial{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .testimonial blockquote{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:clamp(1.3rem, 2.4vw, 1.7rem);
+    line-height:1.55;
+    color:var(--ink);
+    margin:0 0 24px 0;
+  }
+  .testimonial cite{
+    font-style:normal;
+    font-weight:700;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+
+  /* ---------- Team ---------- */
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:36px;
+  }
+  .team-card{ text-align:left; }
+  .avatar{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:var(--radius-organic);
+    background:var(--sand);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Lora', serif;
+    font-size:1.6rem;
+    color:var(--sage-dark);
+    margin-bottom:18px;
+  }
+  .team-card h3{ font-size:1.08rem; }
+  .team-card .role{ font-size:0.92rem; color:var(--sage-dark); font-weight:600; margin-top:2px; }
+  .team-card p{ font-size:0.92rem; margin-top:10px; }
+
+  /* ---------- Contact ---------- */
+  .contact-panel{
+    background:var(--ink);
+    color:var(--ivory);
+    border-radius:28px;
+    padding:64px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+  }
+  .contact-panel h2{ color:var(--ivory); font-size:clamp(1.7rem, 2.4vw, 2.2rem); }
+  .contact-panel .lede{ color:#C9D6CF; margin-top:16px; font-size:1.02rem; }
+  .contact-info{ margin-top:32px; display:flex; flex-direction:column; gap:14px; }
+  .contact-info div{ display:flex; gap:14px; align-items:flex-start; }
+  .contact-info svg{ width:20px; height:20px; margin-top:3px; flex-shrink:0; color:var(--honey); }
+  .contact-info span{ color:#C9D6CF; font-size:0.96rem; }
+  .contact-info strong{ color:var(--ivory); display:block; font-size:0.96rem; }
+
+  form{ display:flex; flex-direction:column; gap:16px; }
+  .field label{
+    display:block;
+    font-size:0.88rem;
+    font-weight:600;
+    color:#C9D6CF;
+    margin-bottom:6px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    padding:13px 16px;
+    border-radius:12px;
+    border:1px solid #46615A;
+    background:#33524A;
+    color:var(--ivory);
+    font-family:'Karla', sans-serif;
+    font-size:0.98rem;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:#8FA69C; }
+  .field textarea{ resize:vertical; min-height:96px; }
+  .contact-panel .btn-primary{
+    background:var(--honey);
+    color:var(--ink);
+    margin-top:4px;
+  }
+  .contact-panel .btn-primary:hover{ background:#c8963c; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:56px 0 40px; }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    border-top:1px solid var(--line);
+    padding-top:32px;
+  }
+  .footer-nav{ display:flex; gap:28px; list-style:none; padding:0; margin:0; flex-wrap:wrap; }
+  .footer-nav a{ text-decoration:none; color:var(--ink-soft); font-size:0.92rem; font-weight:600; }
+  .footer-copy{ font-size:0.86rem; color:var(--ink-soft); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    nav.primary-nav{ display:none; }
+    .nav-toggle{ display:block; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art{ max-width:340px; margin:0 auto; }
+    .philosophy-grid{ grid-template-columns:1fr; gap:36px; }
+    .service-row, .service-row.reverse{ grid-template-columns:1fr; text-align:left; }
+    .service-row.reverse .service-icon, .service-row.reverse .service-copy{ order:initial; }
+    .service-icon{ justify-content:flex-start; }
+    .service-icon svg{ width:88px; height:88px; }
+    .approach-track{ grid-template-columns:1fr 1fr; row-gap:40px; }
+    .approach-track::before{ display:none; }
+    .team-grid{ grid-template-columns:1fr 1fr; }
+    .contact-panel{ grid-template-columns:1fr; padding:40px 28px; border-radius:20px; }
+    section{ padding:72px 0; }
+  }
+  @media (max-width: 560px){
+    .wrap, .header-inner{ padding-left:20px; padding-right:20px; }
+    .team-grid{ grid-template-columns:1fr; }
+    .approach-track{ grid-template-columns:1fr; }
+    .hero-ctas{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C11.2 4 4 11.2 4 20s7.2 16 16 16 16-7.2 16-16S28.8 4 20 4z" fill="#EDE1CC"/>
+        <path d="M12 21c2-4 4-6 8-6s6 2 8 6" stroke="#5C7A68" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="16" r="2" fill="#D9A441"/>
+        <circle cx="26" cy="16" r="2" fill="#7E9C88"/>
+      </svg>
+      <span class="logo-text">Sensory Me</span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Our approach</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-primary">Book a consultation</a>
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow">Autism &amp; sensory rehabilitation, Lucknow</div>
+        <h1>A calmer place for your child to grow.</h1>
+        <p class="lede">Sensory Me works with children and families on sensory integration, communication, and everyday skills — at a pace that respects how each child actually experiences the world.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Book a free consultation</a>
+          <a href="#approach" class="btn btn-ghost">See how we work</a>
+        </div>
+        <div class="hero-note"><span class="dot"></span> New families usually start with a 45-minute assessment, no referral needed.</div>
+      </div>
+      <div class="hero-art">
+        <div class="blob"></div>
+        <svg class="hero-svg" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 210c30-60 70-95 120-95s95 40 118 95" stroke="#5C7A68" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M60 240c30-50 70-78 120-78s95 33 118 78" stroke="#D9A441" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7"/>
+          <circle cx="118" cy="150" r="10" fill="#7E9C88"/>
+          <circle cx="220" cy="140" r="14" fill="#D9A441" opacity="0.85"/>
+          <circle cx="180" cy="190" r="7" fill="#2C4A42" opacity="0.6"/>
+          <path d="M90 270c40 22 140 22 180 0" stroke="#2C4A42" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PHILOSOPHY / ABOUT ================= -->
+  <section id="about" class="section-alt">
+    <div class="wrap philosophy-grid">
+      <div class="philosophy-figure">
+        We don't ask a child to fit the room. We shape the room around the child.
+      </div>
+      <div class="philosophy-body">
+        <p>Every child on the spectrum processes sound, touch, movement, and space differently. Our therapists spend the first sessions simply observing — what settles a child, what overwhelms them — before building a plan around it.</p>
+        <p>Families stay in the room, and stay in the loop. You'll know exactly what we're working on and why, and you'll leave each session with something small you can practice at home.</p>
+        <div class="stat-row">
+          <div><span class="stat-num">12+</span><span class="stat-label">years in pediatric sensory care</span></div>
+          <div><span class="stat-num">1:1</span><span class="stat-label">therapist-to-child sessions</span></div>
+          <div><span class="stat-num">400+</span><span class="stat-label">families supported</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">What we offer</div>
+        <h2>Support built around how your child processes the world.</h2>
+        <p>Each program is adapted to the individual child — these are the areas we most often work on.</p>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 80c10-35 30-52 40-52s30 17 40 52" stroke="#7E9C88" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="60" cy="40" r="10" fill="#EDE1CC" stroke="#5C7A68" stroke-width="2"/>
+            <path d="M35 90h50" stroke="#2C4A42" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="service-copy">
+          <h3>Sensory integration therapy</h3>
+          <p>Guided play with movement, texture, and pressure to help a child's nervous system respond to the world with less overwhelm and more comfort.</p>
+          <a href="#contact">Ask about this program</a>
+        </div>
+      </div>
+
+      <div class="service-row reverse">
+        <div class="service-icon">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" y="30" width="70" height="50" rx="10" fill="#EDE1CC" stroke="#D9A441" stroke-width="2"/>
+            <circle cx="45" cy="55" r="4" fill="#2C4A42"/>
+            <circle cx="60" cy="55" r="4" fill="#2C4A42"/>
+            <circle cx="75" cy="55" r="4" fill="#2C4A42"/>
+            <path d="M50 90l10-10 10 10" stroke="#5C7A68" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="service-copy">
+          <h3>Speech &amp; communication</h3>
+          <p>Building functional communication — spoken, signed, or picture-based — so your child can express needs, ask for help, and be understood.</p>
+          <a href="#contact">Ask about this program</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 90c0-25 13-45 30-45s30 20 30 45" stroke="#7E9C88" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="60" cy="35" r="9" fill="#EDE1CC" stroke="#2C4A42" stroke-width="2"/>
+            <path d="M45 70h30" stroke="#D9A441" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="service-copy">
+          <h3>Occupational therapy</h3>
+          <p>Fine motor skills, self-care routines, and daily-living tasks — dressing, eating, handwriting — practiced through activities your child actually enjoys.</p>
+          <a href="#contact">Ask about this program</a>
+        </div>
+      </div>
+
+      <div class="service-row reverse">
+        <div class="service-icon">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="45" cy="55" r="16" fill="#EDE1CC" stroke="#5C7A68" stroke-width="2"/>
+            <circle cx="75" cy="55" r="16" fill="#EDE1CC" stroke="#D9A441" stroke-width="2"/>
+            <path d="M40 85c8 6 32 6 40 0" stroke="#2C4A42" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="service-copy">
+          <h3>Parent &amp; caregiver coaching</h3>
+          <p>Short, practical sessions that translate therapy-room strategies into things you can use at home, at school runs, and during meltdowns.</p>
+          <a href="#contact">Ask about this program</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APPROACH ================= -->
+  <section id="approach" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Getting started</div>
+        <h2>What the first few weeks look like.</h2>
+        <p>A clear, unhurried path from first contact to a plan that's actually theirs.</p>
+      </div>
+      <div class="approach-track">
+        <div class="approach-step">
+          <div class="approach-num">1</div>
+          <h3>Intake call</h3>
+          <p>A 20-minute conversation about your child, your concerns, and what you're hoping changes.</p>
+        </div>
+        <div class="approach-step">
+          <div class="approach-num">2</div>
+          <h3>Sensory assessment</h3>
+          <p>A relaxed, play-based session where our therapist observes how your child responds to different input.</p>
+        </div>
+        <div class="approach-step">
+          <div class="approach-num">3</div>
+          <h3>A plan you review</h3>
+          <p>We walk you through goals and methods in plain language before a single session is booked.</p>
+        </div>
+        <div class="approach-step">
+          <div class="approach-num">4</div>
+          <h3>Ongoing sessions</h3>
+          <p>Weekly sessions with progress notes, and a plan check-in every six weeks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIAL ================= -->
+  <section>
+    <div class="wrap testimonial">
+      <blockquote>"The first place that asked what my son needed, instead of telling us what he should be doing by now."</blockquote>
+      <cite>— Parent of a 6-year-old, in therapy since 2024</cite>
+    </div>
+  </section>
+
+  <!-- ================= TEAM ================= -->
+  <section id="team" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Who you'll meet</div>
+        <h2>A small, steady team.</h2>
+        <p>Your child works with the same one or two therapists throughout — familiarity matters here.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar">AR</div>
+          <h3>Dr. Anika Rao</h3>
+          <div class="role">Clinical Director, Occupational Therapy</div>
+          <p>15 years in pediatric OT, focused on sensory processing disorders.</p>
+        </div>
+        <div class="team-card">
+          <div class="avatar">SK</div>
+          <h3>Sameer Kapoor</h3>
+          <div class="role">Speech-Language Pathologist</div>
+          <p>Specializes in AAC and early functional communication.</p>
+        </div>
+        <div class="team-card">
+          <div class="avatar">MN</div>
+          <h3>Meera Nair</h3>
+          <div class="role">Sensory Integration Therapist</div>
+          <p>Trained in Ayres Sensory Integration, works mainly with under-6s.</p>
+        </div>
+        <div class="team-card">
+          <div class="avatar">PJ</div>
+          <h3>Priya Joshi</h3>
+          <div class="role">Family &amp; Caregiver Coach</div>
+          <p>Runs our weekend parent workshops and home-strategy sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div>
+          <h2>Let's talk about your child.</h2>
+          <p class="lede">Tell us a little about what's going on. We'll reply within one working day, usually sooner.</p>
+          <div class="contact-info">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 5z"/></svg>
+              <span><strong>Call or WhatsApp</strong>+91 98765 43210</span>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+              <span><strong>Email</strong>hello@sensoryme.example</span>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              <span><strong>Visit us</strong>4th Floor, Shalimar Pinnacle, Gomti Nagar, Lucknow</span>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              <span><strong>Hours</strong>Mon–Sat, 9:00 AM – 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <form onsubmit="event.preventDefault(); this.reset(); document.getElementById('form-success').style.display='block';">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" type="text" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="child-age">Child's age</label>
+            <input id="child-age" type="text" placeholder="e.g. 5 years">
+          </div>
+          <div class="field">
+            <label for="email">Email or phone</label>
+            <input id="email" type="text" placeholder="How should we reach you?" required>
+          </div>
+          <div class="field">
+            <label for="message">What's on your mind</label>
+            <textarea id="message" placeholder="A little about your child, or what you'd like help with"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a consultation</button>
+          <p id="form-success" style="display:none; color:#D9A441; font-size:0.9rem; margin-top:4px;">Thank you — we'll be in touch within one working day.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C11.2 4 4 11.2 4 20s7.2 16 16 16 16-7.2 16-16S28.8 4 20 4z" fill="#EDE1CC"/>
+        <path d="M12 21c2-4 4-6 8-6s6 2 8 6" stroke="#5C7A68" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="logo-text">Sensory Me</span>
+    </a>
+    <ul class="footer-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Our approach</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Sensory Me. All content here is placeholder for demonstration.</div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.primary-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.style.display === 'block';
+      nav.style.display = isOpen ? 'none' : 'block';
+      if (!isOpen) {
+        nav.style.position = 'absolute';
+        nav.style.top = '72px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = '#FBF8F2';
+        nav.style.borderBottom = '1px solid #DCD0B8';
+        nav.style.padding = '20px 32px';
+      }
+      const ul = nav.querySelector('ul');
+      ul.style.flexDirection = 'column';
+      ul.style.gap = '16px';
+    });
+  }
+</script>
+
+</body>
+</html>
